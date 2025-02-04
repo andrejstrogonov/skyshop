@@ -21,7 +21,7 @@ public class StorageService {
         List<Product> allProducts = returnAllProducts();
         List<Article> allArticles = returnAllArticles();
     }
-    private List<Product> returnAllProducts(){
+    public static List<Product> returnAllProducts(){
         List<Product> products = new ArrayList<>();
         Product product1 = new SimpleProduct((UUID.randomUUID(),"Молоко", 80));
         Product product2 = new FixPriceProduct((UUID.randomUUID(),"Хлеб"));
@@ -41,7 +41,7 @@ public class StorageService {
         return products;
     }
     @NotNull
-    private List<Article> returnAllArticles() {
+    public static List<Article> returnAllArticles() {
         List<Article> articles = new ArrayList<>();
         Article article1 = new Article(UUID.randomUUID(), "Хлеб и молоко - можно ли выжить?",
                 "Выжить на хлебе и молоке невозможно, " +
