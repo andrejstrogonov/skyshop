@@ -11,13 +11,14 @@ public final class Article implements Searchable {
     private final String title;
     @NotNull
     private final String content;
+    @NotNull
+    private final UUID id;
 
     public @NotNull UUID getId() {
         return id;
     }
 
-    @NotNull
-    private final UUID id;
+
 
     /**
      * Конструктор.
@@ -25,7 +26,7 @@ public final class Article implements Searchable {
      * @param title   заголовок статьи
      * @param content текст статьи
      */
-    public Article(@NotNull String title, @NotNull String content, @NotNull UUID id) {
+    public Article(UUID title, @NotNull String content, String id) {
         this.title = title;
         this.content = content;
         this.id = id;

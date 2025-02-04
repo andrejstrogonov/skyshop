@@ -13,7 +13,7 @@ public abstract class Product {
     private final String title;
 
     @NotNull
-    private final UUID id;
+    final UUID id;
 
     public @NotNull UUID getId() {
         return id;
@@ -24,7 +24,7 @@ public abstract class Product {
      *
      * @param title название продукта
      */
-    public Product(@NotNull String title, @NotNull UUID id) {
+    public Product( @NotNull UUID id,@NotNull String title) {
         if (title.isBlank()) {
             throw new IllegalArgumentException("Наименование продукта не может быть пустым");
         }

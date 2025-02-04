@@ -11,7 +11,7 @@ public final class FixPriceProduct extends Product{
      *
      * @param title название продукта
      */
-    public FixPriceProduct(@NotNull String title, @NotNull UUID id) {
+    public FixPriceProduct(@NotNull UUID id,@NotNull String title) {
         super(title);
         this.id = id;
     }

@@ -11,7 +11,7 @@ public class SimpleProduct extends Product{
      *
      * @param title название продукта
      */
-    public SimpleProduct(@NotNull String title, int price, @NotNull UUID id) {
+    public SimpleProduct(@NotNull UUID id,@NotNull String title, int price ) {
         super(title);
         if (price <= 0) {
             throw new IllegalArgumentException("Цена не может быть отрицательной или быть равной нулю");

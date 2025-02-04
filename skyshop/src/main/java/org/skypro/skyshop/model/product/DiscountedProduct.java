@@ -13,7 +13,7 @@ public final class DiscountedProduct extends Product {
      *
      * @param title название продукта
      */
-    public DiscountedProduct(@NotNull String title, int basePrice, int discount, @NotNull UUID id) {
+    public DiscountedProduct(@NotNull UUID id,@NotNull String title, int basePrice, int discount ) {
         super(title);
         if (basePrice <= 0) {
             throw new IllegalArgumentException("Базовая цена не может быть отрицательной или быть равной нулю");
