@@ -2,6 +2,8 @@ package org.skypro.skyshop.model.product;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.UUID;
+
 public final class FixPriceProduct extends Product{
     private final static int FIX_PRICE = 100;
     /**
@@ -9,8 +11,9 @@ public final class FixPriceProduct extends Product{
      *
      * @param title название продукта
      */
-    public FixPriceProduct(@NotNull String title) {
+    public FixPriceProduct(@NotNull String title, @NotNull UUID id) {
         super(title);
+        this.id = id;
     }
 
     @Override

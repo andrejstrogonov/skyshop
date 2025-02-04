@@ -3,6 +3,7 @@ package org.skypro.skyshop.model.product;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
+import java.util.UUID;
 
 public abstract class Product {
     /**
@@ -11,17 +12,24 @@ public abstract class Product {
     @NotNull
     private final String title;
 
+    @NotNull
+    private final UUID id;
+
+    public @NotNull UUID getId() {
+        return id;
+    }
 
     /**
      * Конструктор.
      *
      * @param title название продукта
      */
-    public Product(@NotNull String title) {
+    public Product(@NotNull String title, @NotNull UUID id) {
         if (title.isBlank()) {
             throw new IllegalArgumentException("Наименование продукта не может быть пустым");
         }
         this.title = title;
+        this.id = id;
     }
 
     /**

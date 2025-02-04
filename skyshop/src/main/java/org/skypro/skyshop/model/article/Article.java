@@ -1,25 +1,23 @@
 package org.skypro.skyshop.model.article;
 
 import org.jetbrains.annotations.NotNull;
-import org.skypro.skyshop.search.Searchable;
+import org.skypro.skyshop.model.search.Searchable;
 
 import java.util.Objects;
+import java.util.UUID;
 
-/**
- * Статья.<br>
- * Не содержит привязок к продукту или к магазину. Просто общий тип.
- * Поэтому класс находится в отдельном пакете, в основной иерархии магазина
- *
- * @author Константин Терских, kostus.online.1974@yandex.ru, 2024
- * @version 1.1
- */
-// TODO: Как подавить только "class can be record"?
-@SuppressWarnings("all")
 public final class Article implements Searchable {
     @NotNull
     private final String title;
     @NotNull
     private final String content;
+
+    public @NotNull UUID getId() {
+        return id;
+    }
+
+    @NotNull
+    private final UUID id;
 
     /**
      * Конструктор.
@@ -27,9 +25,10 @@ public final class Article implements Searchable {
      * @param title   заголовок статьи
      * @param content текст статьи
      */
-    public Article(@NotNull String title, @NotNull String content) {
+    public Article(@NotNull String title, @NotNull String content, @NotNull UUID id) {
         this.title = title;
         this.content = content;
+        this.id = id;
     }
 
     /**

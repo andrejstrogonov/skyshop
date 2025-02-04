@@ -2,6 +2,8 @@ package org.skypro.skyshop.model.search;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.UUID;
+
 public interface Searchable {
     /**
      * @return Имя объекта Searchable
@@ -24,4 +26,6 @@ public interface Searchable {
     @SuppressWarnings("unused")
     @NotNull
     String getSearchableContentKind();
+
+    default @NotNull UUID getId() {return UUID.randomUUID().toString();}
 }
