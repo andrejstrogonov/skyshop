@@ -15,7 +15,7 @@ public final class Article implements Searchable {
     @NotNull
     private final UUID id;
 
-    public String getId() {
+    public @NotNull String getId() {
         return String.valueOf(id);
     }
 
@@ -79,5 +79,10 @@ public final class Article implements Searchable {
     @Override
     public int hashCode() {
         return Objects.hashCode(title);
+    }
+
+    @Override
+    public boolean matches(String query) {
+        return title.contains(query) || content.contains(query);
     }
 }

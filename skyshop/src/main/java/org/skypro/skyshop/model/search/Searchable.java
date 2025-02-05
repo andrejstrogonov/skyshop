@@ -27,5 +27,8 @@ public interface Searchable {
     @NotNull
     String getSearchableContentKind();
 
+    @NotNull
     default String getId() {return UUID.randomUUID().toString();}
+
+    boolean matches(String query);
 }
