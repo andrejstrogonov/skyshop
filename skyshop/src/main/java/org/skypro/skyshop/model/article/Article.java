@@ -14,14 +14,14 @@ public final class Article implements Searchable {
     @NotNull
     private final UUID id;
 
-    public @NotNull UUID getId() {
-        return id;
+    public String getId() {
+        return String.valueOf(id);
     }
 
-    public Article(@NotNull String title, @NotNull String content, @NotNull UUID id) {
-        this.title = title;
+    public Article(UUID title, @NotNull String content, String id) {
+        this.title = String.valueOf(title);
         this.content = content;
-        this.id = id;
+        this.id = UUID.fromString(id);
     }
 
     /**

@@ -1,6 +1,5 @@
 package org.skypro.skyshop.service;
 
-import org.jetbrains.annotations.NotNull;
 import org.skypro.skyshop.model.article.Article;
 import org.skypro.skyshop.model.product.DiscountedProduct;
 import org.skypro.skyshop.model.product.FixPriceProduct;
@@ -41,7 +40,6 @@ public class StorageService {
 
         return products;
     }
-    @NotNull
     public static List<Article> returnAllArticles() {
         List<Article> articles = new ArrayList<>();
         Article article1 = new Article(UUID.randomUUID(), "Хлеб и молоко - можно ли выжить?",
@@ -62,7 +60,6 @@ public class StorageService {
         Article article4 = new Article(UUID.randomUUID(), "Lorem Ipsum про автомобиль Toyota Ipsum в 10-м кузове.",
                 "У меня когда-то давно был автомобиль Toyota Ipsum в 10-м кузове. " +
                         "Лучшая машина на планете Земля - это минивэн Toyota Ipsum");
-
         // Add articles to the list
         articles.add(article1);
         articles.add(article2);
