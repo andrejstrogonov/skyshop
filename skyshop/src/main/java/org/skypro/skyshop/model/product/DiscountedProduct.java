@@ -7,6 +7,7 @@ import java.util.UUID;
 public final class DiscountedProduct extends Product {
     private final int basePrice;
     private final int discount;
+    private final UUID id;
 
     /**
      * Конструктор.
@@ -14,7 +15,7 @@ public final class DiscountedProduct extends Product {
      * @param title название продукта
      */
     public DiscountedProduct(@NotNull UUID id,@NotNull String title, int basePrice, int discount ) {
-        super(title);
+        super(id,title);
         if (basePrice <= 0) {
             throw new IllegalArgumentException("Базовая цена не может быть отрицательной или быть равной нулю");
         }

@@ -6,13 +6,14 @@ import java.util.UUID;
 
 public final class FixPriceProduct extends Product{
     private final static int FIX_PRICE = 100;
+    private final UUID id;
     /**
      * Конструктор.
      *
      * @param title название продукта
      */
     public FixPriceProduct(@NotNull UUID id,@NotNull String title) {
-        super(title);
+        super(id,title);
         this.id = id;
     }
 

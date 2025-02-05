@@ -18,15 +18,7 @@ public final class Article implements Searchable {
         return id;
     }
 
-
-
-    /**
-     * Конструктор.
-     *
-     * @param title   заголовок статьи
-     * @param content текст статьи
-     */
-    public Article(UUID title, @NotNull String content, String id) {
+    public Article(@NotNull String title, @NotNull String content, @NotNull UUID id) {
         this.title = title;
         this.content = content;
         this.id = id;

@@ -13,7 +13,7 @@ public abstract class Product {
     private final String title;
 
     @NotNull
-    final UUID id;
+    private final UUID id;
 
     public @NotNull UUID getId() {
         return id;
