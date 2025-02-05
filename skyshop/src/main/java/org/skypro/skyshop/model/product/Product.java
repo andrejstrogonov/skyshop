@@ -1,5 +1,6 @@
 package org.skypro.skyshop.model.product;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
@@ -58,6 +59,7 @@ public abstract class Product {
         return this.getClass().getSimpleName() + "-" + SEARCHABLE_CONTENT_KIND + "-" + this.hashCode();
     }
 
+    @JsonIgnore
     @Override
     public @NotNull String getSearchableTerm() {
         return toString();
@@ -65,6 +67,7 @@ public abstract class Product {
 
     public static final String SEARCHABLE_CONTENT_KIND = "PRODUCT";
 
+    @JsonIgnore
     @Override
     public @NotNull String getSearchableContentKind() {
         return SEARCHABLE_CONTENT_KIND;

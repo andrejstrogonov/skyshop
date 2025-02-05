@@ -1,5 +1,6 @@
 package org.skypro.skyshop.model.article;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
 import org.skypro.skyshop.model.search.Searchable;
 
@@ -39,6 +40,7 @@ public final class Article implements Searchable {
      *
      * @return текст статьи
      */
+    @JsonIgnore
     @NotNull
     public String getContent() {
         return content;
@@ -54,6 +56,7 @@ public final class Article implements Searchable {
         return this.getClass().getSimpleName() + "-" + SEARCHABLE_CONTENT_KIND + "-" + this.hashCode();
     }
 
+    @JsonIgnore
     @Override
     public @NotNull String getSearchableTerm() {
         return toString();
