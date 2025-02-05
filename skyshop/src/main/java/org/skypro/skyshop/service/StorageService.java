@@ -21,15 +21,16 @@ public class StorageService {
         List<Product> allProducts = returnAllProducts();
         List<Article> allArticles = returnAllArticles();
     }
-    public static List<Product> returnAllProducts(){
+    public static List<Product> returnAllProducts() {
         List<Product> products = new ArrayList<>();
-        Product product1 = new SimpleProduct((UUID.randomUUID(),"Молоко", 80));
-        Product product2 = new FixPriceProduct((UUID.randomUUID(),"Хлеб"));
-        Product product3 = new FixPriceProduct((UUID.randomUUID(),"Сыр"));
-        Product product4 = new DiscountedProduct((UUID.randomUUID(),"Масло", 400, 20));
-        Product product5 = new DiscountedProduct(UUID.randomUUID(),("Яйца", 140, 10));
-        Product product6 = new SimpleProduct(UUID.randomUUID(),("Мясо", 900));
-        Product product7 = new SimpleProduct((UUID.randomUUID(),"Бластер", 200));
+        Product product1 = new SimpleProduct(UUID.randomUUID(), "Молоко", 80);
+        Product product2 = new FixPriceProduct(UUID.randomUUID(), "Хлеб");
+        Product product3 = new FixPriceProduct(UUID.randomUUID(), "Сыр");
+        Product product4 = new DiscountedProduct(UUID.randomUUID(), "Масло", 400, 20);
+        Product product5 = new DiscountedProduct(UUID.randomUUID(), "Яйца", 140, 10);
+        Product product6 = new SimpleProduct(UUID.randomUUID(), "Мясо", 900);
+        Product product7 = new SimpleProduct(UUID.randomUUID(), "Бластер", 200);
+
         products.add(product1);
         products.add(product2);
         products.add(product3);
