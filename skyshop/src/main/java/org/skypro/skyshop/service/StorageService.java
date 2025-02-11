@@ -75,6 +75,9 @@ public class StorageService {
         searchables.addAll((Collection<? extends Searchable>) products);
         return searchables;
     }
+    public Optional<Product> getProductById(UUID id) {
+        return Optional.ofNullable(availableProducts.get(id));
+    }
 
 
 }
