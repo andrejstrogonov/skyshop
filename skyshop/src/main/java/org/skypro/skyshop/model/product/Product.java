@@ -84,4 +84,11 @@ public abstract class Product {
     public int hashCode() {
         return Objects.hashCode(title);
     }
+
+    public Product orElseThrow(Object productNotFound) {
+        if (this == null) {
+            throw new IllegalArgumentException(productNotFound.toString());
+        }
+        return this;
+    }
 }
