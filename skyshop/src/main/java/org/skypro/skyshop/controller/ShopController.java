@@ -50,9 +50,9 @@ public class ShopController {
         return basketService.getUserBasket();
     }
     @GetMapping("/products/{id}")
-    public ResponseEntity<Object> getProductById(@PathVariable("id") UUID id) {
+    public ResponseEntity<ShopError> getProductById(@PathVariable("id") UUID id) {
         return StorageService.getProductById(id)
-                .map(product -> ResponseEntity.ok(product))
+                .map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND)
                         .body(new ShopError("PRODUCT_NOT_FOUND", "Product not found")));
     }
