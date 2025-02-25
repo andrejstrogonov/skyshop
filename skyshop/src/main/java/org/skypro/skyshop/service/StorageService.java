@@ -12,7 +12,7 @@ import java.util.*;
 
 @Service
 public class StorageService {
-    private final Map<UUID, Product> products;
+    private static Map<UUID, Product> products =  new HashMap<>();
     private final Map<UUID, Article> articles;
 
     public StorageService(Map<UUID, Product> products, Map<UUID, Article> articles) {
@@ -75,9 +75,8 @@ public class StorageService {
         searchables.addAll((Collection<? extends Searchable>) products);
         return searchables;
     }
-    public Optional<Product> getProductById(UUID id) {
-        return Optional.ofNullable(availableProducts.get(id));
+    public static Product getProductById(UUID id) {
+        return Optional.ofNullable(products.get(id))
+                .orElseThrow(() -> new NoSuchProductException(id));
     }
-
-
 }

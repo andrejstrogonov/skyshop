@@ -2,8 +2,11 @@ package org.skypro.skyshop.model.product;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
+import org.skypro.skyshop.service.ShopError;
+import org.springframework.http.ResponseEntity;
 
 import java.util.Objects;
+import java.util.Optional;
 import java.util.UUID;
 
 public abstract class Product {
@@ -83,5 +86,28 @@ public abstract class Product {
     @Override
     public int hashCode() {
         return Objects.hashCode(title);
+    }
+
+
+    public Optional<ResponseEntity<ShopError>> map(Object o) {
+        if (o == null) {
+            return Optional.of(ResponseEntity.badRequest().body(new ShopError("Invalid input", "Input object cannot be null")));
+        }
+        return Optional.empty();
+    }
+
+    public void ifPresentOrElse(Object o, Runnable actionIfPresent, Runnable actionIfEmpty) {
+        if (o != null) {
+            actionIfPresent.run();
+        } else {
+            actionIfEmpty.run();
+        }
+    }
+
+    public Product orElseThrow() {
+        if (this == null) {
+            throw new NullPointerException("Product object is null");
+        }
+        return this;
     }
 }
