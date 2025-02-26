@@ -12,9 +12,7 @@ import org.skypro.skyshop.service.BasketService;
 import org.skypro.skyshop.service.StorageService;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.Collections;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.verify;
@@ -34,7 +32,7 @@ class BasketServiceTest {
     private BasketService basketService;
 
     @Test
-    public void shouldThrowIllegalArgumentExceptionWhenAddingProductWithNullId() {
+    void shouldThrowIllegalArgumentExceptionWhenAddingProductWithNullId() {
         // Arrange
         UUID nullId = null;
 
@@ -42,7 +40,7 @@ class BasketServiceTest {
         assertThrows(IllegalArgumentException.class, () -> basketService.addProductToBasket(nullId));
     }
     @Test
-    public void shouldThrowIllegalArgumentExceptionWhenAddingProductWithEmptyTitle() {
+    void shouldThrowIllegalArgumentExceptionWhenAddingProductWithEmptyTitle() {
         // Arrange
         UUID existingProductId = UUID.randomUUID();
 
@@ -53,7 +51,7 @@ class BasketServiceTest {
         verify(productBasket).addProduct(existingProductId);
     }
     @Test
-    public void shouldReturnEmptyBasketWhenProductBasketIsEmpty() {
+    void shouldReturnEmptyBasketWhenProductBasketIsEmpty() {
         // Arrange
         when(storageService.getUserBasket()).thenReturn(Collections.emptyList());
 
@@ -64,14 +62,14 @@ class BasketServiceTest {
         assertTrue(userBasket.isEmpty());
     }
     @Test
-    public void shouldReturnUserBasketWithProductsWhenProductBasketIsNotEmpty() {
+    void shouldReturnUserBasketWithProductsWhenProductBasketIsNotEmpty() {
         // Arrange
         UUID existingProductId1 = UUID.randomUUID();
         UUID existingProductId2 = UUID.randomUUID();
 
         // Mock the behavior of StorageService to return products when requested
-        when(storageService.getProductById(existingProductId1)).thenReturn(Optional.of(new Product(existingProductId1, "Product 1", 100)));
-        when(storageService.getProductById(existingProductId2)).thenReturn(Optional.of(new Product(existingProductId2, "Product 2", 200)));
+        when(StorageService.getProductById(existingProductId1)).thenReturn(Optional.of(new Product(existingProductId1, "Product 1", 100)));
+        when(StorageService.getProductById(existingProductId2)).thenReturn(Optional.of(new Product(existingProductId2, "Product 2", 200)));
 
         // Add products to the ProductBasket
         Map<UUID, Integer> productsInBasket = new HashMap<>();

@@ -1,10 +1,7 @@
 package org.skypro.skyshop.service;
 
 import org.skypro.skyshop.model.article.Article;
-import org.skypro.skyshop.model.product.DiscountedProduct;
-import org.skypro.skyshop.model.product.FixPriceProduct;
-import org.skypro.skyshop.model.product.Product;
-import org.skypro.skyshop.model.product.SimpleProduct;
+import org.skypro.skyshop.model.product.*;
 import org.skypro.skyshop.model.search.Searchable;
 import org.springframework.stereotype.Service;
 
@@ -12,34 +9,34 @@ import java.util.*;
 
 @Service
 public class StorageService {
-    private static Map<UUID, Product> products =  new HashMap<>();
+    private static Map<UUID, ProductInterface> products =  new HashMap<>();
     private final Map<UUID, Article> articles;
 
-    public StorageService(Map<UUID, Product> products, Map<UUID, Article> articles) {
+    public StorageService(Map<UUID, ProductInterface> products, Map<UUID, Article> articles) {
         this.products = products;
         this.articles = articles;
-        List<Product> allProducts = returnAllProducts();
+        List<ProductInterface> allProductInterfaces = returnAllProducts();
         List<Article> allArticles = returnAllArticles();
     }
-    public static List<Product> returnAllProducts() {
-        List<Product> products = new ArrayList<>();
-        Product product1 = new SimpleProduct(UUID.randomUUID(), "Молоко", 80);
-        Product product2 = new FixPriceProduct(UUID.randomUUID(), "Хлеб");
-        Product product3 = new FixPriceProduct(UUID.randomUUID(), "Сыр");
-        Product product4 = new DiscountedProduct(UUID.randomUUID(), "Масло", 400, 20);
-        Product product5 = new DiscountedProduct(UUID.randomUUID(), "Яйца", 140, 10);
-        Product product6 = new SimpleProduct(UUID.randomUUID(), "Мясо", 900);
-        Product product7 = new SimpleProduct(UUID.randomUUID(), "Бластер", 200);
+    public static List<ProductInterface> returnAllProducts() {
+        List<ProductInterface> productInterfaces = new ArrayList<>();
+        ProductInterface productInterface1 = new SimpleProduct(UUID.randomUUID(), "Молоко", 80);
+        ProductInterface productInterface2 = new FixPriceProduct(UUID.randomUUID(), "Хлеб");
+        ProductInterface productInterface3 = new FixPriceProduct(UUID.randomUUID(), "Сыр");
+        ProductInterface productInterface4 = new DiscountedProduct(UUID.randomUUID(), "Масло", 400, 20);
+        ProductInterface productInterface5 = new DiscountedProduct(UUID.randomUUID(), "Яйца", 140, 10);
+        ProductInterface productInterface6 = new SimpleProduct(UUID.randomUUID(), "Мясо", 900);
+        ProductInterface productInterface7 = new SimpleProduct(UUID.randomUUID(), "Бластер", 200);
 
-        products.add(product1);
-        products.add(product2);
-        products.add(product3);
-        products.add(product4);
-        products.add(product5);
-        products.add(product6);
-        products.add(product7);
+        productInterfaces.add(productInterface1);
+        productInterfaces.add(productInterface2);
+        productInterfaces.add(productInterface3);
+        productInterfaces.add(productInterface4);
+        productInterfaces.add(productInterface5);
+        productInterfaces.add(productInterface6);
+        productInterfaces.add(productInterface7);
 
-        return products;
+        return productInterfaces;
     }
     public static List<Article> returnAllArticles() {
         List<Article> articles = new ArrayList<>();
@@ -76,7 +73,11 @@ public class StorageService {
         return searchables;
     }
     public static Product getProductById(UUID id) {
-        return Optional.ofNullable(products.get(id))
+        return (Product) Optional.ofNullable(products.get(id))
                 .orElseThrow(() -> new NoSuchProductException(id));
+    }
+
+    public Object getUserBasket() {
+        return productBasket;
     }
 }
