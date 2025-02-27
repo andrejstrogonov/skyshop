@@ -7,7 +7,8 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.skypro.skyshop.model.basket.ProductBasket;
 import org.skypro.skyshop.model.basket.UserBasket;
-import org.skypro.skyshop.model.product.Product;
+import org.skypro.skyshop.model.product.FixPriceProduct;
+import org.skypro.skyshop.model.product.SimpleProduct;
 import org.skypro.skyshop.service.BasketService;
 import org.skypro.skyshop.service.StorageService;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -68,8 +69,8 @@ class BasketServiceTest {
         UUID existingProductId2 = UUID.randomUUID();
 
         // Mock the behavior of StorageService to return products when requested
-        when(StorageService.getProductById(existingProductId1)).thenReturn(Optional.of(new Product(existingProductId1, "Product 1", 100)));
-        when(StorageService.getProductById(existingProductId2)).thenReturn(Optional.of(new Product(existingProductId2, "Product 2", 200)));
+        when(StorageService.getProductById(existingProductId1)).thenReturn(new SimpleProduct(UUID.randomUUID(), "Молоко", 80));
+        when(StorageService.getProductById(existingProductId2)).thenReturn(new FixPriceProduct(UUID.randomUUID(), "Хлеб"));
 
         // Add products to the ProductBasket
         Map<UUID, Integer> productsInBasket = new HashMap<>();
@@ -83,10 +84,10 @@ class BasketServiceTest {
         // Assert
         // Verify that the returned UserBasket contains the expected products and quantities
         assertEquals(2, userBasket.getItems().size());
-        assertEquals(existingProductId1, userBasket.getItems().get(0).getProduct().getId());
-        assertEquals(2, userBasket.getItems().get(0).getQuantity());
-        assertEquals(existingProductId2, userBasket.getItems().get(1).getProduct().getId());
-        assertEquals(1, userBasket.getItems().get(1).getQuantity());
+        assertEquals(existingProductId1, userBasket.getItems());
+        assertEquals(1, userBasket.getItems().get(existingProductId1));
+        assertEquals(existingProductId2, userBasket.getItems());
+        assertEquals(2, userBasket.getItems().get(existingProductId2));
 
         // Verify that the total price of the basket is calculated correctly
         assertEquals(400, userBasket.getTotal());

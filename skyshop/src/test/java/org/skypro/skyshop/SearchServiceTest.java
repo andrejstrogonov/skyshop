@@ -79,7 +79,7 @@ class SearchServiceTest {
 
         // Assert
         assertEquals(1, searchResults.size());
-        assertEquals("Expected object", searchResults.get(0).getTitle());
+        assertEquals("Expected object", searchResults.get(0).getName());
     }
 
 }

@@ -51,4 +51,8 @@ public final class UserBasket {
         }
         return items;
     }
+
+    public int getQuantity(int i) {
+        return basketItems.get(i).getQuantity();
+    }
 }
