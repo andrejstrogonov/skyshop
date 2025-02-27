@@ -40,5 +40,6 @@ public final class BasketItem {
     }
 
     public Integer getQuantity() {
+        return quantity;
     }
 }
