@@ -78,6 +78,20 @@ public class StorageService {
     }
 
     public Object getUserBasket() {
-        return productBasket;
+        ArrayList<ProductInterface> productsInBasket = new ArrayList<>(products.values());
+
+        // Calculate the total price of the products in the basket
+        int total = productsInBasket.stream()
+                .mapToInt(StorageService::getProductPrice)
+                .sum();
+
+        // You can also add the total price to the list of products or create a separate Basket object
+        // For simplicity, let's just return the list of products
+
+        return productsInBasket;
+    }
+
+    private static int getProductPrice(ProductInterface product) {
+        return product.getPrice();
     }
 }

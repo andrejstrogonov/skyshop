@@ -9,4 +9,6 @@ public interface ProductInterface {
 
     @JsonIgnore
     @NotNull String getSearchableContentKind();
+
+    int getPrice();
 }
