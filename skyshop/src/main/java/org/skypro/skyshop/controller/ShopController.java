@@ -1,7 +1,7 @@
 package org.skypro.skyshop.controller;
 import org.skypro.skyshop.model.article.Article;
 import org.skypro.skyshop.model.basket.UserBasket;
-import org.skypro.skyshop.model.product.Product;
+import org.skypro.skyshop.model.product.ProductInterface;
 import org.skypro.skyshop.service.ShopError;
 import org.skypro.skyshop.model.search.SearchResult;
 import org.skypro.skyshop.service.BasketService;
@@ -27,7 +27,7 @@ public class ShopController {
     private BasketService basketService;
 
     @GetMapping("/products")
-    public Collection<Product> getAllProducts() {
+    public Collection<ProductInterface> getAllProducts() {
         return StorageService.returnAllProducts();
     }
 

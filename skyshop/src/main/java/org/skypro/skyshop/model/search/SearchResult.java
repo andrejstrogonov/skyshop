@@ -9,6 +9,7 @@ public class SearchResult {
     private final String name;
     private final String contentType;
 
+
     public SearchResult(@NotNull String id, String name, String contentType) {
         this.id = UUID.fromString(id);
         this.name = name;

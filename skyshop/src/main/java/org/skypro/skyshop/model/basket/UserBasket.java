@@ -1,8 +1,6 @@
 package org.skypro.skyshop.model.basket;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public final class UserBasket {
     private final List<BasketItem> basketItems;
@@ -40,5 +38,21 @@ public final class UserBasket {
                 "basketItems=" + basketItems +
                 ", total=" + total +
                 '}';
+    }
+
+    public boolean isEmpty() {
+        return false;
+    }
+
+    public Map<UUID, Integer> getItems() {
+        Map<UUID, Integer> items = new HashMap<>();
+        for (BasketItem basketItem : basketItems) {
+            items.put(basketItem.getProduct().getId(), basketItem.getQuantity());
+        }
+        return items;
+    }
+
+    public int getQuantity(int i) {
+        return basketItems.get(i).getQuantity();
     }
 }

@@ -16,10 +16,7 @@ public final class BasketItem {
     public Product getProduct() {
         return product;
     }
-
-    public int getQuantity() {
-        return quantity;
-    }
+    
 
     @Override
     public boolean equals(Object o) {
@@ -40,5 +37,9 @@ public final class BasketItem {
                 "product=" + product +
                 ", quantity=" + quantity +
                 '}';
+    }
+
+    public Integer getQuantity() {
+        return quantity;
     }
 }

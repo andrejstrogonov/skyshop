@@ -9,7 +9,7 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.UUID;
 
-public abstract class Product {
+public abstract class Product implements ProductInterface {
     /**
      * Название продукта.
      */
